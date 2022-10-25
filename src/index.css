@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +9,158 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  /* Colors */
+  --color-white: white;
+  --color-dark: #212121;
+  --color-light-grey: #e6e6e3;
+  --color-light-blue: #7aceff;
+  --color-light-pink: rgb(255, 132, 132);
+  --color-background: var(--color-light);
+  --color-text: var(--color-dark);
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+
+
+/* Main styles */
+
+.App {
+  margin: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.Todo {
+  width: 100vw;
+  max-width: 620px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+}
+
+
+/* Header styles */
+
+.TodoHeader {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-light-grey);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+
+  position: relative;
+  text-decoration: none;
+}
+
+.TodoHeader::after {
+  width: 33%;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 33%;
+  height: 0;
+  border-bottom: 2px solid var(--color-light-blue);
+  transition: width 0.3s ease;
+}
+
+
+/* Input styles */
+
+.TodoInput {
+  padding: 1.5rem;
+  background: var(--color-background);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.InputField {
+  width: 100%;
+  outline: none;
+  border: none;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 12px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.InputField:focus {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.24);
+}
+
+.Button {
+  width: 72px;
+  background: var(--color-light-blue);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 1;
+  transition: opacity 0.05s ease-in;
+}
+
+.Button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.Button:active {
+  opacity: 0.6;
+}
+
+
+/* Todo list styles */
+
+.TodoList {
+  background: var(--color-background);
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.TodoItem {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 14fr 1fr;
+}
+
+.TodoItem:not(:last-child) {
+  border-bottom: 1px solid var(--color-light-grey);
+  padding: 0 0 16px 0;
+}
+
+.TodoTitle {
+  font-size: 1.1rem;
+}
+
+.TodoCheckbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: auto 0 auto 0;
+}
+
+.DeleteButton {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-left: auto;
+}
+
+.DeleteButton:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
